@@ -1,0 +1,23 @@
+# Phase 1: face detection/encoding
+# face_recognition pulls dlib as a dependency; on Windows the official dlib
+# package often tries to compile from source. Use dlib-bin instead — see README.
+face_recognition==1.3.0
+numpy==2.4.6
+Pillow==12.3.0
+setuptools==69.5.1
+
+# Phase 2: SearchApi.io client
+requests
+
+# Phase 3: (face deps above)
+
+# Phase 4-6: blockchain (pinned — deploy.py/upload.py use signed.raw_transaction)
+web3==8.0.0
+py-solc-x>=2.0.0
+python-dotenv
+
+# Windows-only (install BEFORE face_recognition — see README):
+#   pip install dlib-bin==20.0.1
+#   pip install face-recognition==1.3.0 --no-deps
+#   pip install face-recognition-models Click
+# Linux/macOS: pip install -r requirements.txt is usually sufficient.

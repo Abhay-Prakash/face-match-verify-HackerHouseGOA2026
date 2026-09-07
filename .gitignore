@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+.venv*/
+data/output/
+data/calibration/*
+!data/calibration/threshold_samples/
+!data/calibration/threshold_samples/**
+src/blockchain/contract/artifacts/
+.pytest_cache/
+PROJECT_STATUS.md
