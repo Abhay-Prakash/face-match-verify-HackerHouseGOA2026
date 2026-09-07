@@ -1,6 +1,6 @@
 # Face-Match Discovery + Blockchain Verification
 
-**HH Goa 2026 — Shortlisting Task 3**
+**Team Styrk's HH Goa 2026 — Shortlisting Task 3**
 
 A Python pipeline that discovers publicly posted photos matching a given face,
 anchors a canonical SHA-256 hash of the match on **Polygon PoS Amoy testnet**,
