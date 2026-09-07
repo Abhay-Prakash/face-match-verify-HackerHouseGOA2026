@@ -1,6 +1,25 @@
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:2c5364,100:00c9ff&height=220&section=header&text=Face-Match%20Discovery&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=%2B%20Blockchain%20Verification%20%7C%20HH%20Goa%202026%20%E2%80%94%20Shortlisting%20Task%203&descAlignY=58&descSize=18" width="100%"/>
+
+<br/>
+
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=2800&pause=900&color=00C9FF&center=true&vCenter=true&width=760&lines=Discover+public+photo+matches+for+a+given+face;Anchor+a+canonical+SHA-256+hash+on+Polygon+PoS+Amoy;Independently+re-verify+with+ON_CHAIN+%2B+SOURCE+checks)](https://git.io/typing-svg)
+
+<br/>
+
+![Python](https://img.shields.io/badge/Python-3.11.15-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Polygon](https://img.shields.io/badge/Polygon-Amoy%20Testnet-8247E5?style=for-the-badge&logo=polygon&logoColor=white)
+![web3](https://img.shields.io/badge/web3.py-8.0.0-F16822?style=for-the-badge&logo=ethereum&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Submission%20Ready-brightgreen?style=for-the-badge)
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=3&width=1000" width="100%"/>
+
+</div>
+
 # Face-Match Discovery + Blockchain Verification
 
-**Team Styrk's HH Goa 2026 — Shortlisting Task 3**
+**HH Goa 2026 — Shortlisting Task 3**
 
 A Python pipeline that discovers publicly posted photos matching a given face,
 anchors a canonical SHA-256 hash of the match on **Polygon PoS Amoy testnet**,
@@ -11,6 +30,10 @@ and supports independent **ON_CHAIN** and **SOURCE** re-verification.
 > found at a public URL — not "this person is definitely X."
 
 ---
+
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=transparent&color=auto&height=45&section=header&text=HH%20Goa%20Task%203%20Mapping&fontSize=20&fontColor=00C9FF&fontAlignY=70" width="100%"/>
+</div>
 
 ## HH Goa Task 3 mapping
 
@@ -28,6 +51,10 @@ and supports independent **ON_CHAIN** and **SOURCE** re-verification.
 No web frontend. Testnet only (not mainnet).
 
 ---
+
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=transparent&color=auto&height=45&section=header&text=Architecture&fontSize=20&fontColor=00C9FF&fontAlignY=70" width="100%"/>
+</div>
 
 ## Architecture
 
@@ -67,6 +94,10 @@ Outputs: `data/output/match_result.json`, `data/output/verification_log.json`
 | `scripts/run_pipeline.sh` | Convenience bash runner script |
 
 ---
+
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=transparent&color=auto&height=45&section=header&text=Installation&fontSize=20&fontColor=00C9FF&fontAlignY=70" width="100%"/>
+</div>
 
 ## Installation
 
@@ -142,6 +173,10 @@ See [scripts/fund_test_wallet.md](scripts/fund_test_wallet.md) for faucet + Meta
 - **Accept rule:** `face_distance <= 0.53`
 
 ---
+
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=transparent&color=auto&height=45&section=header&text=Canonical%20Payload%20Schema&fontSize=20&fontColor=00C9FF&fontAlignY=70" width="100%"/>
+</div>
 
 ## Canonical payload schema
 
@@ -220,6 +255,10 @@ Outcomes: `MATCH` / `NO MATCH` / `UNVERIFIABLE`
 
 ---
 
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=transparent&color=auto&height=45&section=header&text=Running%20the%20Pipeline&fontSize=20&fontColor=00C9FF&fontAlignY=70" width="100%"/>
+</div>
+
 ## Running the pipeline
 
 SearchApi.io requires a **public URL** for the same photo as `--input`:
@@ -287,11 +326,17 @@ No secrets are written to these files.
 
 ---
 
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=transparent&color=auto&height=45&section=header&text=Example%20Runs%20%26%20Transactions&fontSize=20&fontColor=00C9FF&fontAlignY=70" width="100%"/>
+</div>
+
 ## Example runs & transactions
 
-### Golden baseline (debugging — old schema)
+### Historical debugging transaction — not the final submission result
 
-Used to validate pipeline mechanics. Canonical field was `face_similarity_score`.
+This transaction is preserved for development/audit history only. The final submission result is documented in the section below.
+
+Used during development to validate pipeline mechanics. Canonical field was `face_similarity_score`.
 
 | Field | Value |
 |-------|-------|
@@ -335,7 +380,7 @@ Allowlist only (not exhaustive web coverage):
 Candidates on other domains or unlisted subdomains (such as mobile `m.facebook.com` or `mobile.twitter.com`) are skipped by design.
 
 ### Media resolution precedence
-SearchApi.io candidate image fields may be URL strings **or** objects `{ "link": "..." }` — normalized by `match_finder._extract_media_url()`. To anchor the genuine image rather than a lossy preview, candidate processing prioritizes the uncompressed source image over the Google-served thumbnail:
+SearchApi.io candidate image fields may be URL strings **or** objects such as `{ "link": "..." }`. The pipeline normalizes these fields and prioritizes the candidate's `image` field over its `thumbnail` field when available:
 ```python
 image_source_url = _extract_media_url(c.get("image") or c.get("thumbnail"))
 ```
@@ -350,6 +395,10 @@ image_source_url = _extract_media_url(c.get("image") or c.get("thumbnail"))
 - Demo only with your own or consenting subjects' photos
 
 ---
+
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=transparent&color=auto&height=45&section=header&text=Known%20Limitations&fontSize=20&fontColor=00C9FF&fontAlignY=70" width="100%"/>
+</div>
 
 ## Known limitations
 
@@ -379,3 +428,10 @@ image_source_url = _extract_media_url(c.get("image") or c.get("thumbnail"))
 ## License / submission
 
 Built for HH Goa 2026 Shortlisting Task 3. Rotate API keys before final submission.
+
+<div align="center">
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00c9ff,50:2c5364,100:0f2027&height=150&section=footer" width="100%"/>
+
+</div>
